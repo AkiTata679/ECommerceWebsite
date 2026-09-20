@@ -74,3 +74,38 @@ function loadProducts() {
 
 // Load products when page loads
 document.addEventListener("DOMContentLoaded", loadProducts);
+
+
+
+
+// LOAD FEATURED PRODUCTS ON HOME PAGE
+
+function loadFeaturedProducts() {
+    const container = document.getElementById("featured-products");
+
+    if (!container) return; // Only run on home page
+
+    container.innerHTML = "";
+
+    // Choose first 3 products as featured
+    const featured = products.slice(0, 3);
+
+    featured.forEach(product => {
+        const card = document.createElement("div");
+        card.classList.add("product-card");
+
+        card.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p class="price">$${product.price}</p>
+            <a href="productdetails.html?id=${product.id}" class="btn-secondary">View Details</a>
+        `;
+
+        container.appendChild(card);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    loadProducts();          // For products.html
+    loadFeaturedProducts();  // For home.html
+});
