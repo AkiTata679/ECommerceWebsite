@@ -116,15 +116,16 @@
     transform: translateY(-5px);
 }
 
-/* Uniform Image Sizing */
 .product-card img {
     width: 100%;
-    height: 250px;        /* consistent height */
-    object-fit: cover;    /* prevents distortion */
+    height: 180px;          /* smaller height */
+    max-height: 180px;      /* prevents overflow */
+    object-fit: cover;      /* keeps proportions clean */
     object-position: center;
     border-radius: 8px;
     margin-bottom: 15px;
 }
+
 
 .product-card h3 {
     font-size: 1.2rem;
