@@ -109,3 +109,50 @@ document.addEventListener("DOMContentLoaded", () => {
     loadProducts();          // For products.html
     loadFeaturedProducts();  // For home.html
 });
+
+
+
+
+
+// LOAD PRODUCT DETAILS PAGE
+
+function loadProductDetails() {
+    const detailsContainer = document.getElementById("product-details");
+
+    if (!detailsContainer) return; // Only run on productdetails.html
+
+    // Get ID from URL
+    const params = new URLSearchParams(window.location.search);
+    const productId = parseInt(params.get("id"));
+
+    // Find product
+    const product = products.find(p => p.id === productId);
+
+    if (!product) {
+        detailsContainer.innerHTML = "<p>Product not found.</p>";
+        return;
+    }
+
+    // Build details layout
+    detailsContainer.innerHTML = `
+        <div class="details-wrapper">
+            <img src="${product.image}" class="details-image" alt="${product.name}">
+
+            <div class="details-info">
+                <h2>${product.name}</h2>
+                <p class="price">$${product.price}</p>
+                <p class="desc">${product.description}</p>
+
+                <button class="btn-primary" onclick="addToCart(${product.id})">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    loadProducts();          // products.html
+    loadFeaturedProducts();  // home.html
+    loadProductDetails();    // productdetails.html
+});
