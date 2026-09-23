@@ -75,7 +75,6 @@ function loadFeatured() {
     const container = document.getElementById("featured-products");
     if (!container) return;
 
-    // Only show the first 3 products
     products.slice(0, 3).forEach(product => {
         const card = document.createElement("div");
         card.classList.add("product-card");
