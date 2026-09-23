@@ -12,14 +12,14 @@ function saveCart(cart) {
 
 // Add item to cart (from details page)
 function addToCart(productId, qty = 1) {
-    const cart = getCart();
+    let cart = getCart();
     const product = products.find(p => p.id === productId);
     if (!product) return;
 
     const existing = cart.find(item => item.id === productId);
 
     if (existing) {
-        existing.quantity += qty;   // add unlimited quantity
+        existing.quantity += qty;
     } else {
         cart.push({
             id: product.id,
@@ -31,7 +31,11 @@ function addToCart(productId, qty = 1) {
     }
 
     saveCart(cart);
-    alert("Added to cart");
+
+    // If user is already on cart page, update instantly
+    if (window.location.pathname.includes("cart.html")) {
+        loadCart();
+    }
 }
 
 // Remove item
@@ -44,7 +48,7 @@ function removeFromCart(productId) {
 
 // Increase quantity
 function increaseQty(productId) {
-    const cart = getCart();
+    let cart = getCart();
     const item = cart.find(i => i.id === productId);
     if (item) item.quantity++;
     saveCart(cart);
@@ -53,8 +57,10 @@ function increaseQty(productId) {
 
 // Decrease quantity
 function decreaseQty(productId) {
-    const cart = getCart();
+    let cart = getCart();
     const item = cart.find(i => i.id === productId);
+
+    if (!item) return;
 
     if (item.quantity > 1) {
         item.quantity--;
