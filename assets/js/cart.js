@@ -10,7 +10,7 @@ function saveCart(cart) {
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-// Add item to cart (from details page)
+// Add item to cart
 function addToCart(productId, qty = 1) {
     let cart = getCart();
     const product = products.find(p => p.id === productId);
@@ -32,10 +32,8 @@ function addToCart(productId, qty = 1) {
 
     saveCart(cart);
 
-    // Show popup
     showCartPopup();
 
-    // Update cart instantly if user is on cart page
     if (window.location.pathname.includes("cart.html")) {
         loadCart();
     }
@@ -121,9 +119,7 @@ function loadCart() {
 
 document.addEventListener("DOMContentLoaded", loadCart);
 
-// -----------------------------
-// POPUP NOTIFICATION
-// -----------------------------
+// Popup
 function showCartPopup() {
     const popup = document.getElementById("cart-popup");
     if (!popup) return;
