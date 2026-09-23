@@ -32,7 +32,10 @@ function addToCart(productId, qty = 1) {
 
     saveCart(cart);
 
-    // If user is already on cart page, update instantly
+    // Show popup
+    showCartPopup();
+
+    // Update cart instantly if user is on cart page
     if (window.location.pathname.includes("cart.html")) {
         loadCart();
     }
@@ -117,3 +120,17 @@ function loadCart() {
 }
 
 document.addEventListener("DOMContentLoaded", loadCart);
+
+// -----------------------------
+// POPUP NOTIFICATION
+// -----------------------------
+function showCartPopup() {
+    const popup = document.getElementById("cart-popup");
+    if (!popup) return;
+
+    popup.classList.add("show");
+
+    setTimeout(() => {
+        popup.classList.remove("show");
+    }, 2000);
+}

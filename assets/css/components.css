@@ -1,7 +1,4 @@
-/* ------------------------------
-   NAVBAR
------------------------------- */
-
+/* ------------------------------ NAVBAR ------------------------------ */
 .navbar {
     background: #ffffff;
     padding: 20px 40px;
@@ -30,10 +27,7 @@
     color: #007bff;
 }
 
-/* ------------------------------
-   BUTTONS
------------------------------- */
-
+/* ------------------------------ BUTTONS ------------------------------ */
 .btn-primary {
     background: #007bff;
     color: #fff;
@@ -64,10 +58,7 @@
     background: #e6e6e6;
 }
 
-/* ------------------------------
-   PRODUCT GRID
------------------------------- */
-
+/* ------------------------------ PRODUCT GRID ------------------------------ */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -89,7 +80,6 @@
     transform: translateY(-5px);
 }
 
-/* PRODUCT IMAGES */
 .product-card img {
     width: 100%;
     height: 160px;
@@ -99,10 +89,7 @@
     margin-bottom: 15px;
 }
 
-/* ------------------------------
-   PRODUCT DETAILS PAGE
------------------------------- */
-
+/* ------------------------------ PRODUCT DETAILS PAGE ------------------------------ */
 .details-wrapper {
     display: flex;
     gap: 40px;
@@ -141,10 +128,7 @@
     color: #555;
 }
 
-/* ------------------------------
-   CART PAGE
------------------------------- */
-
+/* ------------------------------ CART PAGE ------------------------------ */
 .cart-item {
     display: flex;
     gap: 20px;
@@ -196,10 +180,7 @@
     margin-top: 30px;
 }
 
-/* ------------------------------
-   CONFIRMATION PAGE
------------------------------- */
-
+/* ------------------------------ CONFIRMATION PAGE ------------------------------ */
 .confirmation-box {
     background: #fff;
     padding: 40px;
@@ -228,10 +209,30 @@
     gap: 20px;
 }
 
-/* ------------------------------
-   FOOTER
------------------------------- */
+/* ------------------------------ CART POPUP ------------------------------ */
+.cart-popup {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #007bff;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 999;
+    pointer-events: none;
+}
 
+.cart-popup.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ------------------------------ FOOTER ------------------------------ */
 .footer {
     background: #111;
     color: #ccc;
