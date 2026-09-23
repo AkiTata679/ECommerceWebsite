@@ -24,19 +24,37 @@ a {
     color: inherit;
 }
 
-/* Container utility */
+/* ------------------------------
+   CONTAINER UTILITY
+------------------------------ */
+
 .container {
     width: 90%;
     max-width: 1200px;
     margin: auto;
 }
 
-/* Section spacing */
+/* ------------------------------
+   SECTION SPACING
+------------------------------ */
+
 section {
     padding: 60px 0;
 }
 
-/* Page spacing */
+/* ------------------------------
+   PAGE SPACING
+------------------------------ */
+
 .products-page {
     padding: 60px 0;
+}
+
+/* ------------------------------
+   FEATURED SECTION
+------------------------------ */
+
+.featured h2 {
+    text-align: center;
+    margin-bottom: 40px;
 }
