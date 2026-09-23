@@ -6,21 +6,21 @@ const products = [
         id: 1,
         name: "Samsung Galaxy S25 Ultra",
         price: 1199,
-        image: "../assets/images/s25ultra.png",
+        image: "../images/products/SamsungGalaxyS25Ultra.jpg",
         description: "The latest Samsung flagship with incredible camera performance."
     },
     {
         id: 2,
-        name: "iPhone 16 Pro Max",
+        name: "iPhone 17 Pro Max",
         price: 1299,
-        image: "../assets/images/iphone16promax.png",
+        image: "../images/products/Iphone17ProMax.jpg",
         description: "Apple’s newest powerhouse with A18 chip and titanium frame."
     },
     {
         id: 3,
-        name: "Google Pixel 9 Pro",
+        name: "Google Pixel 10 Pro",
         price: 1099,
-        image: "../assets/images/pixel9pro.png",
+        image: "../images/products/GooglePixel10Pro.jpg",
         description: "Google’s best AI-powered smartphone yet."
     }
 ];
@@ -61,6 +61,7 @@ function loadFeatured() {
     const container = document.getElementById("featured-products");
     if (!container) return;
 
+    // Only show the first 3 products
     products.slice(0, 3).forEach(product => {
         const card = document.createElement("div");
         card.classList.add("product-card");
