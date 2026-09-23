@@ -2,39 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Cart</title>
-
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/components.css">
 </head>
 
 <body>
 
-<header class="navbar">
-    <div class="logo">ECommerce Store</div>
-
-    <nav class="nav-links">
-        <a href="home.html">Home</a>
-        <a href="products.html">Products</a>
-        <a href="cart.html">Cart</a>
-        <a href="checkout.html">Checkout</a>
+    <nav class="navbar">
+        <div class="logo">ECommerce</div>
+        <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="cart.html">Cart</a>
+        </div>
     </nav>
-</header>
 
-<section class="featured">
-    <h2>Your Cart</h2>
+    <section class="cart-section">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
 
-    <div id="cart-items"></div>
+        <div class="cart-summary">
+            <h3>Total: <span id="cart-total">$0.00</span></h3>
+            <button class="btn-primary" onclick="window.location.href='checkout.html'">
+                Proceed to Checkout
+            </button>
+        </div>
+    </section>
 
-    <div class="cart-summary">
-        <h3>Total: <span id="cart-total">$0.00</span></h3>
-        <a href="checkout.html" class="btn-primary">Proceed to Checkout</a>
-    </div>
-</section>
-
-<script src="../assets/js/products.js"></script>
-<script src="../assets/js/cart.js"></script>
-
+    <script src="../assets/js/cart.js"></script>
 </body>
 </html>

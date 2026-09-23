@@ -2,34 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
-
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/components.css">
 </head>
 
 <body>
 
-<header class="navbar">
-    <div class="logo">ECommerce Store</div>
-
-    <nav class="nav-links">
-        <a href="home.html">Home</a>
-        <a href="products.html">Products</a>
-        <a href="cart.html">Cart</a>
-        <a href="checkout.html">Checkout</a>
+    <nav class="navbar">
+        <div class="logo">ECommerce</div>
+        <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="cart.html">Cart</a>
+        </div>
     </nav>
-</header>
 
-<section class="featured">
-    <h2>Checkout</h2>
+    <section class="checkout-section">
+        <h2>Checkout</h2>
 
-    <p>Checkout page coming soon.</p>
-</section>
+        <div class="checkout-box">
+            <p>Enter your details to complete your purchase.</p>
 
-<script src="../assets/js/products.js"></script>
-<script src="../assets/js/cart.js"></script>
+            <button class="btn-primary" onclick="window.location.href='confirmation.html'">
+                Complete Order
+            </button>
+        </div>
+    </section>
 
 </body>
 </html>
