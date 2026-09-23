@@ -22,6 +22,20 @@ const products = [
         price: 1099,
         image: "../images/products/GooglePixel10Pro.jpg",
         description: "Google’s best AI-powered smartphone yet."
+    },
+    {
+        id: 4,
+        name: "OnePlus 13",
+        price: 999,
+        image: "../images/products/Oneplus13.jpg",
+        description: "Fast, smooth, and powerful — the best OnePlus yet."
+    },
+    {
+        id: 5,
+        name: "Xiaomi Mi 14 Pro",
+        price: 899,
+        image: "../images/products/XiaomiMi14Pro.jpg",
+        description: "Xiaomi’s flagship with unbeatable value."
     }
 ];
 
