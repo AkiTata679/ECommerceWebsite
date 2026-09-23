@@ -1,60 +1,36 @@
 // -----------------------------
-// PRODUCT LIST (PHONES)
+// PRODUCT DATA
 // -----------------------------
-
 const products = [
     {
         id: 1,
-        name: "iPhone 17 Pro Max",
-        price: 1299,
-        category: "Electronics",
-        image: "../assets/images/products/Iphone17ProMax.jpg",
-        description: "The latest flagship iPhone with an A19 chip, advanced quad‑camera system, and stunning 120Hz display."
+        name: "Samsung Galaxy S25 Ultra",
+        price: 1199,
+        image: "../assets/images/s25ultra.png",
+        description: "The latest Samsung flagship with incredible camera performance."
     },
     {
         id: 2,
-        name: "Samsung Galaxy S25 Ultra",
-        price: 1199,
-        category: "Electronics",
-        image: "../assets/images/products/SamsungGalaxyS25Ultra.jpg",
-        description: "Samsung’s most powerful device featuring a 200MP camera, S‑Pen support, and exceptional battery life."
+        name: "iPhone 16 Pro Max",
+        price: 1299,
+        image: "../assets/images/iphone16promax.png",
+        description: "Apple’s newest powerhouse with A18 chip and titanium frame."
     },
     {
         id: 3,
-        name: "Google Pixel 10 Pro",
-        price: 999,
-        category: "Electronics",
-        image: "../assets/images/products/GooglePixel10Pro.jpg",
-        description: "Google’s AI‑powered smartphone with incredible computational photography and clean Android experience."
-    },
-    {
-        id: 4,
-        name: "OnePlus 13",
-        price: 899,
-        category: "Electronics",
-        image: "../assets/images/products/Oneplus13.jpg",
-        description: "A flagship killer offering blazing performance, fast charging, and a smooth 144Hz AMOLED display."
-    },
-    {
-        id: 5,
-        name: "Xiaomi Mi 14 Pro",
-        price: 799,
-        category: "Electronics",
-        image: "../assets/images/products/XiaomiMi14Pro.jpg",
-        description: "High‑end specs at a competitive price with a powerful Snapdragon chipset and premium build quality."
+        name: "Google Pixel 9 Pro",
+        price: 1099,
+        image: "../assets/images/pixel9pro.png",
+        description: "Google’s best AI-powered smartphone yet."
     }
 ];
 
-
 // -----------------------------
-// RENDER PRODUCTS INTO GRID (products.html)
+// LOAD ALL PRODUCTS (products.html)
 // -----------------------------
-
 function loadProducts() {
     const container = document.getElementById("product-list");
     if (!container) return;
-
-    container.innerHTML = "";
 
     products.forEach(product => {
         const card = document.createElement("div");
@@ -65,27 +41,27 @@ function loadProducts() {
             <h3>${product.name}</h3>
             <p class="price">$${product.price}</p>
             <p class="desc">${product.description}</p>
-            <a href="productdetails.html?id=${product.id}" class="btn-secondary">View Details</a>
+
+            <button class="btn-secondary"
+                onclick="window.location.href='productdetails.html?id=${product.id}'">
+                View Details
+            </button>
         `;
 
         container.appendChild(card);
     });
 }
 
+document.addEventListener("DOMContentLoaded", loadProducts);
 
 // -----------------------------
 // LOAD FEATURED PRODUCTS (home.html)
 // -----------------------------
-
-function loadFeaturedProducts() {
+function loadFeatured() {
     const container = document.getElementById("featured-products");
     if (!container) return;
 
-    container.innerHTML = "";
-
-    const featured = products.slice(0, 3);
-
-    featured.forEach(product => {
+    products.slice(0, 3).forEach(product => {
         const card = document.createElement("div");
         card.classList.add("product-card");
 
@@ -93,35 +69,38 @@ function loadFeaturedProducts() {
             <img src="${product.image}" alt="${product.name}">
             <h3>${product.name}</h3>
             <p class="price">$${product.price}</p>
-            <a href="productdetails.html?id=${product.id}" class="btn-secondary">View Details</a>
+
+            <button class="btn-secondary"
+                onclick="window.location.href='productdetails.html?id=${product.id}'">
+                View Details
+            </button>
         `;
 
         container.appendChild(card);
     });
 }
 
+document.addEventListener("DOMContentLoaded", loadFeatured);
 
 // -----------------------------
-// LOAD PRODUCT DETAILS PAGE
+// LOAD PRODUCT DETAILS (productdetails.html)
 // -----------------------------
-
 function loadProductDetails() {
-    const detailsContainer = document.getElementById("product-details");
-    if (!detailsContainer) return;
+    const container = document.getElementById("product-details");
+    if (!container) return;
 
     const params = new URLSearchParams(window.location.search);
-    const productId = parseInt(params.get("id"));
+    const id = parseInt(params.get("id"));
 
-    const product = products.find(p => p.id === productId);
-
+    const product = products.find(p => p.id === id);
     if (!product) {
-        detailsContainer.innerHTML = "<p>Product not found.</p>";
+        container.innerHTML = "<p>Product not found.</p>";
         return;
     }
 
-    detailsContainer.innerHTML = `
+    container.innerHTML = `
         <div class="details-wrapper">
-            <img src="${product.image}" class="details-image" alt="${product.name}">
+            <img src="${product.image}" class="details-image">
 
             <div class="details-info">
                 <h2>${product.name}</h2>
@@ -136,13 +115,4 @@ function loadProductDetails() {
     `;
 }
 
-
-// -----------------------------
-// INITIALIZE PAGE
-// -----------------------------
-
-document.addEventListener("DOMContentLoaded", () => {
-    loadProducts();
-    loadFeaturedProducts();
-    loadProductDetails();
-});
+document.addEventListener("DOMContentLoaded", loadProductDetails);
