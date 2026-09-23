@@ -1,6 +1,6 @@
 let products = [];
 
-// Fetch products from Node.js backend
+// Fetch products from SQLite backend
 async function fetchProducts() {
     try {
         const res = await fetch("http://localhost:3000/products");
@@ -10,7 +10,7 @@ async function fetchProducts() {
     }
 }
 
-// Load featured products (homepage)
+// Load featured products
 async function loadFeatured() {
     await fetchProducts();
 
@@ -24,7 +24,7 @@ async function loadFeatured() {
         card.classList.add("product-card");
 
         card.innerHTML = `
-            <img src="${product.image}" alt="${product.name}">
+            <img src="${product.image}">
             <h3>${product.name}</h3>
             <p class="price">$${product.price}</p>
 
@@ -38,7 +38,7 @@ async function loadFeatured() {
     });
 }
 
-// Load all products (products page)
+// Load all products
 async function loadProducts() {
     await fetchProducts();
 
@@ -52,7 +52,7 @@ async function loadProducts() {
         card.classList.add("product-card");
 
         card.innerHTML = `
-            <img src="${product.image}" alt="${product.name}">
+            <img src="${product.image}">
             <h3>${product.name}</h3>
             <p class="price">$${product.price}</p>
 
@@ -66,7 +66,7 @@ async function loadProducts() {
     });
 }
 
-// Load product details page
+// Load product details
 async function loadProductDetails() {
     await fetchProducts();
 
@@ -100,7 +100,6 @@ async function loadProductDetails() {
     `;
 }
 
-// Auto-run correct loader depending on page
 document.addEventListener("DOMContentLoaded", () => {
     loadFeatured();
     loadProducts();
