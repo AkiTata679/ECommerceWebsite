@@ -5,12 +5,15 @@ const path = require("path");
 
 const app = express();
 app.use(cors());
+app.use(express.json()); // allows JSON POST bodies
 
 // Connect to SQLite database
 const dbPath = path.join(__dirname, "../database/store.db");
 const db = new sqlite3.Database(dbPath);
 
-// GET all products
+// ----------------------
+// GET ALL PRODUCTS
+// ----------------------
 app.get("/products", (req, res) => {
     const query = "SELECT * FROM products";
 
@@ -22,7 +25,9 @@ app.get("/products", (req, res) => {
     });
 });
 
-// GET single product
+// ----------------------
+// GET SINGLE PRODUCT
+// ----------------------
 app.get("/products/:id", (req, res) => {
     const query = "SELECT * FROM products WHERE id = ?";
     const id = req.params.id;
@@ -38,6 +43,37 @@ app.get("/products/:id", (req, res) => {
     });
 });
 
+// ----------------------
+// CREATE ORDER
+// ----------------------
+app.post("/orders", (req, res) => {
+    const { name, email, address, cart, total } = req.body;
+
+    if (!name || !email || !address || !cart || !total) {
+        return res.status(400).json({ error: "Missing required fields" });
+    }
+
+    const query = `
+        INSERT INTO orders (customer_name, customer_email, customer_address, cart_json, total)
+        VALUES (?, ?, ?, ?, ?)
+    `;
+
+    db.run(
+        query,
+        [name, email, address, JSON.stringify(cart), total],
+        function (err) {
+            if (err) {
+                return res.status(500).json({ error: "Failed to save order" });
+            }
+
+            res.json({ success: true, orderId: this.lastID });
+        }
+    );
+});
+
+// ----------------------
+// START SERVER
+// ----------------------
 app.listen(3000, () => {
     console.log("Backend running on http://localhost:3000");
 });
