@@ -22,13 +22,17 @@
         <h2>Checkout</h2>
 
         <div class="checkout-box">
-            <p>Enter your details to complete your purchase.</p>
+            <form id="checkout-form">
+                <input type="text" id="name" placeholder="Full Name" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="text" id="address" placeholder="Address" required>
 
-            <button class="btn-primary" onclick="window.location.href='confirmation.html'">
-                Complete Order
-            </button>
+                <button type="submit" class="btn-primary">Submit Order</button>
+            </form>
         </div>
     </section>
 
+    <script src="../assets/js/cart.js"></script>
+    <script src="../assets/js/checkout.js"></script>
 </body>
 </html>

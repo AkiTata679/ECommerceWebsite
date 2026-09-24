@@ -1,7 +1,3 @@
-// -----------------------------
-// CART SYSTEM USING LOCALSTORAGE
-// -----------------------------
-
 function getCart() {
     return JSON.parse(localStorage.getItem("cart")) || [];
 }
@@ -10,7 +6,6 @@ function saveCart(cart) {
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-// Add item to cart
 function addToCart(productId, qty = 1) {
     let cart = getCart();
     const product = products.find(p => p.id === productId);
@@ -31,7 +26,6 @@ function addToCart(productId, qty = 1) {
     }
 
     saveCart(cart);
-
     showCartPopup();
 
     if (window.location.pathname.includes("cart.html")) {
@@ -39,7 +33,6 @@ function addToCart(productId, qty = 1) {
     }
 }
 
-// Remove item
 function removeFromCart(productId) {
     let cart = getCart();
     cart = cart.filter(item => item.id !== productId);
@@ -47,7 +40,6 @@ function removeFromCart(productId) {
     loadCart();
 }
 
-// Increase quantity
 function increaseQty(productId) {
     let cart = getCart();
     const item = cart.find(i => i.id === productId);
@@ -56,7 +48,6 @@ function increaseQty(productId) {
     loadCart();
 }
 
-// Decrease quantity
 function decreaseQty(productId) {
     let cart = getCart();
     const item = cart.find(i => i.id === productId);
@@ -74,7 +65,6 @@ function decreaseQty(productId) {
     loadCart();
 }
 
-// Load cart page
 function loadCart() {
     const container = document.getElementById("cart-items");
     const totalContainer = document.getElementById("cart-total");
@@ -119,7 +109,6 @@ function loadCart() {
 
 document.addEventListener("DOMContentLoaded", loadCart);
 
-// Popup
 function showCartPopup() {
     const popup = document.getElementById("cart-popup");
     if (!popup) return;
